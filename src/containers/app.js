@@ -1,44 +1,64 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import CardList from '../components/cardlist';
-import SearchBox from '../components/searchbox';
-import Scroll from '../components/scroll.js';
+import SearchBox from '../components/searchbox';  
+import Scroll from '../components/scroll';
+
 import './app.css';
 
-class App extends Component {
-	constructor() {
-		super()
-		this.state = {
-			catfriends: [],
-			searchfield: ''
-		}
+import { setSearchField, requestCats } from '../actions';
+// import { searchCats, catfriends } from '../reducers';
+
+const mapStateToProps = state => {
+	return {   
+		searchField: state.searchCats.searchField,
+		catfriends: state.requestCats.catfriends,
+		isPending: state.requestCats.isPending,
+		error: state.requestCats.error
 	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+		onRequestCats: () => dispatch(requestCats())
+	}
+}
+
+class App extends Component {
+	// constructor() {
+	// 	super()
+	// 	this.state = {
+	// 		catfriends: [],
+	// 	}
+	// }
 
 	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/users')
-			.then(response => response.json())
-			// .then(response => {return response.json();})
-			.then(users => this.setState({ catfriends: users }));
-			// .then(users => {this.setState({ catfriends: users })});
+		this.props.onRequestCats();
+		// console.log(this.props.store.getState());
+		// fetch('https://jsonplaceholder.typicode.com/users')
+		// .then(response => response.json())
+		// .then(users => this.setState({ catfriends: users }));
 	}
 
-	onSearchChange = (event) => {
+	// onSearchChange = (event) => {
 		// console.log(event.target.value);
-		this.setState({searchfield: event.target.value})
+		// this.setState({searchfield: event.target.value})
 		// console.log(filterCats);
-	}
+	// }
 
 	render() {
-		const { catfriends, searchfield } = this.state;
+		const { searchField, onSearchChange, catfriends, isPending } = this.props
 		const filterCats = catfriends.filter(friend => {
-			return friend.name.toLowerCase().includes(searchfield.toLowerCase());
+			return friend.name.toLowerCase().includes(searchField.toLowerCase());
 		})
-		
-		return !catfriends.length ?
+		return isPending ?
 			<h1 className='f1 tc'>Loading...</h1> :
 			(
 				<div className='tc'>
 					<h1 className='f1'>Cat Friends</h1>
-					<SearchBox searchChange={this.onSearchChange} />
+					<SearchBox searchChange={onSearchChange} />
 					<Scroll>
 						<CardList catfriends={filterCats} />
 					</Scroll>
@@ -47,4 +67,4 @@ class App extends Component {
 		}
 	}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

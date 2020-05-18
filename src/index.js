@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunkMiddleWare from 'redux-thunk';
+import { Provider } from 'react-redux';
 import './index.css';
-import App from './containers/app';
-// import Card from './card.js';
-// import CardList from './cardlist.js';
-import * as serviceWorker from './serviceWorker';
 import 'tachyons';
-// robocats uses export instead of export default and can export multiple variables.
-// must destructure the line below (if more variables add here { robocats, ... })
+
+import App from './containers/app';
+import * as serviceWorker from './serviceWorker';
+import { searchCats, requestCats } from './reducers'; 
+
+const logger = createLogger();
+
+const rootReducer = combineReducers({ searchCats, requestCats })
+const store = 
+createStore(rootReducer, applyMiddleware(thunkMiddleWare, logger));
+
 
 // ReactDOM.render(
 // 	<React.StrictMode><App /></React.StrictMode>
@@ -16,5 +25,9 @@ import 'tachyons';
 // // unregister() to register() below. 
 // serviceWorker.unregister();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>, document.getElementById('root')
+);
 serviceWorker.register();
