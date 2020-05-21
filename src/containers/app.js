@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CardList from '../components/cardlist';
 import SearchBox from '../components/searchbox';  
 import Scroll from '../components/scroll';
+import Header from '../components/header';
 
 import './app.css';
 
@@ -14,8 +15,8 @@ const mapStateToProps = state => {
 	return {   
 		searchField: state.searchCats.searchField,
 		catfriends: state.requestCats.catfriends,
-		isPending: state.requestCats.isPending,
-		error: state.requestCats.error
+		isPending: state.requestCats.isPending
+		// error: state.requestCats.error
 	}
 }
 
@@ -57,7 +58,7 @@ class App extends Component {
 			<h1 className='f1 tc'>Loading...</h1> :
 			(
 				<div className='tc'>
-					<h1 className='f1'>Cat Friends</h1>
+					<Header />
 					<SearchBox searchChange={onSearchChange} />
 					<Scroll>
 						<CardList catfriends={filterCats} />

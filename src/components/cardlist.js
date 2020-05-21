@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './card.js';
 
 const cardlist = ({ catfriends }) => {
+	console.log('CardList');
 	return (
 		<div> {
 			catfriends.map((user, i) => {
