@@ -7,6 +7,7 @@ This is a Progressive Web App (PWA), built with Create React App, that demonstra
 - State Management using Redux 
 - Performance enhancement through Code Splitting
 - REST API Integration with JSONPlaceholder
+- Lighthouse Score: 100% across the board :)
 
 ----------------------------------------------------------
 ## Scope / About
