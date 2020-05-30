@@ -1,0 +1,32 @@
+@font-face {
+font-display: swap;
+font-family: 'American Typewriter';
+font-style: normal;
+font-weight: normal;
+src: local('American Typewriter'), url('../containers/ufonts.com_american-typewriter.woff') format('woff');
+}
+
+body {
+	height: 100vh;
+	overflow-y: hidden;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+h1, h1.f1 {
+	font-family: 'American Typewriter';
+	/*text-transform: uppercase;*/
+	font-weight: 400;
+	color: turquoise;
+	text-shadow: 3px 5px 8px rgba(0,0,0,.4), 1px 2px 3px rgba(0,0,0,.2);
+	margin: 1rem 0;
+}
+
+/*.catcard {
+	width: 220px;
+	min-height: 450px;
+}
+
+.wrap {flex-wrap: wrap; word-wrap: break-word;}*/

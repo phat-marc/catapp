@@ -18,16 +18,20 @@ class CounterButton extends Component {
 		return false;
 	}
 
-	updateCount = () => {
-		this.setState(state => {
-			return {count: state.count + 1}
-		})
-	}
+// moving this into the render. this here is a seperate method
+	// updateCount = () => {
+	// 	this.setState(state => {
+	// 		return {count: state.count + 1}
+	// 	})
+	// }
 
 	render() {
 		console.log('CounterButton');
 		return (
-			<button color={this.props.color} onClick={this.updateCount}>
+			<button 
+			id='counter' 
+			color={this.props.color} 
+			onClick={() => this.setState(state => ({count: state.count + 1}))}>
 				Count: {this.state.count}
 			</button>
 			)

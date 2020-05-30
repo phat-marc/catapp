@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from './card.js';
+import Card from './card';
 
-const cardlist = ({ catfriends }) => {
+const CardList = ({ catfriends }) => {
 	console.log('CardList');
 	return (
 		<div> {
@@ -19,7 +19,7 @@ const cardlist = ({ catfriends }) => {
 	);
 }
 
-export default cardlist;
+export default CardList;
 
 
 // in React, when doing a loop, give it a unique key. So Virtual DOM can org itself
