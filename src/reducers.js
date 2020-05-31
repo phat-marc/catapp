@@ -21,9 +21,9 @@ export const searchCats = (state=initialStateSearch, action={}) => {
 }
 
 const initialStateCats = {
-	isPending: false,
 	catfriends: [],
-	error: ''
+	isPending: false,
+	// error: ''
 }
 
 export const requestCats =  (state=initialStateCats, action={}) => {

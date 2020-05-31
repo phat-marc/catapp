@@ -11,6 +11,8 @@ export const setSearchField = (text) => ({
 	payload: text
 })
 
+// This is don't work cause, it is a higher order function and needs thunk middleware to run the asynchronous function dispatch
+// export const requestCats = (dispatch) => {
 export const requestCats = () => (dispatch) => {
 	dispatch({ type: REQUEST_CATS_PENDING });
 	apiCall('https://jsonplaceholder.typicode.com/users')

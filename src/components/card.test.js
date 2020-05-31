@@ -12,12 +12,14 @@ import Card from './card.js';
 
 
 //snaphot - udemy 
-it('expect to render card component', () => {
-	expect(shallow(<Card />)).toMatchSnapshot()
+describe('cards', () => {
+	it('expect to render card component', () => {
+		expect(shallow(<Card />)).toMatchSnapshot()
+	})
 })
 // this creates a folder called snapshots
 
-//snaphot - from jest documentation ***THIS IS THE WAY***
+//snaphot - from jest documentation ***THIS IS not THE WAY***
 // it('expect to render card component', () => {
 // 	const tree = renderer
 // 		.create(<Card />)
