@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 
-import CardList from '../components/cardlist';
-import SearchBox from '../components/searchbox';  
-import Scroll from '../components/scroll';
+import CardList from '../components/Cardlist';
+import SearchBox from '../components/Searchbox';  
+import Scroll from '../components/Scroll';
 // import ErrorBoundry from '../components/errorBoundry';
-import Header from '../components/header';
+import Header from '../components/Header';
 
 import './mainPage.css';
+
 
 class MainPage extends Component {
 	componentDidMount() {

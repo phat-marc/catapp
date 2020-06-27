@@ -1,5 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+// import ReactDOM from 'react-dom'; ADDED TS...
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleWare from 'redux-thunk';
@@ -7,7 +9,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import 'tachyons';
 
-import App from './containers/app';
+import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import { searchCats, requestCats } from './reducers'; 
 
@@ -28,6 +30,6 @@ createStore(rootReducer, applyMiddleware(thunkMiddleWare, logger));
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
-	</Provider>, document.getElementById('root')
+	</Provider>, document.getElementById('root') as HTMLElement
 );
 serviceWorker.register();

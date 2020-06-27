@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
+import { ICat } from '../containers/App';
 
-const card = ({ id, name, email }) => {
+const Card: React.SFC<ICat> = ({ id, name, email }) => {
 	// destructuring works like this or just do it direct above instead of props
 	// const { id, name, email } = props;
 	return (
@@ -14,4 +15,4 @@ const card = ({ id, name, email }) => {
 	);
 }
 
-export default card;
+export default Card;

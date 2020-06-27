@@ -1,19 +1,45 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react'; added TS...
+import * as React from "react";
 import { connect } from 'react-redux';
 import { setSearchField, requestCats } from '../actions';
+import { searchCats } from '../reducers'
 
 // For testing we remove these and add mainpage
 // import CardList from '../components/cardlist';
 // import SearchBox from '../components/searchbox';  
 // import Scroll from '../components/scroll';
 // import Header from '../components/header';
-import MainPage from '../components/mainPage';
-
+import MainPage from '../components/MainPage';  
 import './app.css';
 
 // import { searchCats, catfriends } from '../reducers';
 
-const mapStateToProps = (state) => {
+export interface ICat {
+  name: string;
+  id: number;
+  email: string;
+}
+
+export interface IMyProps {
+  propFromParent: number;
+}
+
+interface IMyState {
+	propFromReduxStore: any;
+}
+
+interface IDispProps {
+  onSomeEvent: () => void;
+}
+
+type Props = IMyState & IDispProps & IMyProps
+
+interface State {
+  searchCats: string;
+  requestCats: string;
+}
+
+const mapStateToProps = (state: State, MyProps: IMyProps) => {
 	return {   
 		searchField: state.searchCats.searchField,
 		catfriends: state.requestCats.catfriends,
@@ -22,14 +48,21 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+// 		onRequestCats: () => dispatch(requestCats(dispatch))
+// 	}
+// }
+
+const mapDispatchToProps = (dispatch: Redux.Dispatch<any>, MyProps: IMyProps): IDispProps => {
 	return {
 		onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
 		onRequestCats: () => dispatch(requestCats(dispatch))
 	}
 }
 
-class App extends Component {
+class App extends React.Component<IMyState, IMyProps> {
 	// constructor() {
 	// 	super()
 	// 	this.state = {
@@ -53,7 +86,7 @@ class App extends Component {
 		// console.log(filterCats);
 	// }
 
-	render() {
+	render(): JSX.Element {
 		// for testing we remove this and just render mainpage
 		// const { searchField, onSearchChange, catfriends, isPending } = this.props
 		// const filterCats = catfriends.filter(friend => {
@@ -76,4 +109,4 @@ class App extends Component {
 
 // technicaly speaking this here is rendering connect which wraps the app component. So it 
 // does not render app component directly
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect<IMyState, IDispProps, IMyProps>(mapStateToProps, mapDispatchToProps)(App);

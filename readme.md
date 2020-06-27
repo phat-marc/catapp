@@ -5,6 +5,7 @@
 This is a Progressive Web App (PWA), built with Create React App, that demonstrates:  
 
 - State Management using Redux 
+- Static typing with Typescript
 - Performance enhancement through Code Splitting
 - REST API Integration with JSONPlaceholder
 - Lighthouse Score: 100% across the board :)
@@ -17,7 +18,7 @@ This is a project that forms part of the courses: The Complete Web Developer in 
 ----------------------------------------------------------
 ## Project Status
 
-As of May 2020 it is stilll in development, but is functional and can be viewed [here](https://phat-marc.github.io/catapp/)
+As of June 2020 it is still in development, but is functional and can be viewed [here](https://phat-marc.github.io/catapp/)
 
 ----------------------------------------------------------
 ## Tech Used
@@ -29,7 +30,11 @@ As of May 2020 it is stilll in development, but is functional and can be viewed 
 	- Redux
 	- Redux-Logger
 	- Redux-Thunk
+	- React-Scripts
+	- Typescript
 	- Tachyons
+	- Enzyme
+	- Enzyme-Adapter-React
 	- HTML/CSS/JS 
 	- Node.js
 	- NPM 

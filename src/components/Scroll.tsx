@@ -1,6 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 
-const Scroll = (props) => {
+type Props = {
+	children?: JSX.Element
+}
+const Scroll = (props: Props) => {
 	return (
 		<div style={{ overflow: 'scroll',  border: '1px solid black', height: '800px' }}> 
 			{props.children}

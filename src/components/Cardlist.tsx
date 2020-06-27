@@ -1,7 +1,8 @@
-import React from 'react';
-import Card from './card';
+import * as React from 'react';
+import Card from './Card';
+import { ICat } from '../containers/App';
 
-const CardList = ({ catfriends }) => {
+const CardList = ({ catfriends }: {catfriends: Array<ICat>}) => {
 	console.log('CardList');
 	return (
 		<div> {
