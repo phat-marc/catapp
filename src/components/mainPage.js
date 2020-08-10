@@ -4,7 +4,7 @@ import CardList from '../components/cardlist';
 import SearchBox from '../components/searchbox';  
 import Scroll from '../components/scroll';
 // import ErrorBoundry from '../components/errorBoundry';
-import Header from '../components/header';
+import Header from '../components/Header';
 
 import './mainPage.css';
 
